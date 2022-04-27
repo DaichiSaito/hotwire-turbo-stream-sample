@@ -1,0 +1,17 @@
+<h1>Home#show</h1>
+<%# インスタンスにすることが多い気がする。:homeだと全てのブラウザにブロードキャストされてしまうので。  %>
+<%= turbo_stream_from :home %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="pt-2" id="tasks">
+        <%= render @tasks %>
+      </div>
+
+      <div id="new_task">
+        <%= render 'form', task: @task %>
+      </div>
+    </div>
+  </div>
+</div>
+

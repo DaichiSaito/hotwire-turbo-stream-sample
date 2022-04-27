@@ -1,0 +1,8 @@
+<%# 登録の入力フォームの中身を空にする %>
+<%= turbo_stream.replace "new_task" do %>
+  <%= render 'form', task: Task.new %>
+<% end %>
+
+<%# Flashを表示 %>
+<%#= turbo_stream.update "flash", partial: "shared/flash" %>
+<%# -> application.turbo_stream.erb で代用したのでこちらは不要  %>
