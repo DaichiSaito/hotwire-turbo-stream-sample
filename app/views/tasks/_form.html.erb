@@ -1,4 +1,9 @@
-<%= form_with model: task do |f| %>
-  <%= f.text_field :name, placeholder: "New task", autocomplete: "off" %>
-  <%= f.submit %>
+<%= turbo_frame_tag task  do %>
+  <%= form_with model: task do |f| %>
+    <%= f.text_field :name, placeholder: "New task", autocomplete: "off" %>
+    <%= f.submit %>
+    <% if task.persisted? %>
+      <%= link_to "キャンセル", task, class: "btn btn-sm btn-outline-secondary" %>
+    <% end %>
+  <% end %>
 <% end %>

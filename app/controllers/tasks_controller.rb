@@ -26,6 +26,24 @@ class TasksController < ApplicationController
     Turbo::StreamsChannel.broadcast_remove_to :home, target: @task
   end
 
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      Turbo::StreamsChannel.broadcast_replace_to :home, target: @task, partial: "tasks/task", locals: { task: @task }
+      flash.now.notice = "更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def task_params

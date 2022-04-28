@@ -1,8 +1,8 @@
 <%= turbo_frame_tag dom_id(task) do %>
   <div class="d-flex justify-content-between">
     <p class="text-sm"><%= task.name %></p>
-    <div>
-      <%#= link_to '削除', task_path(task), data: { turbo_method: :delete, turbo_confirm: '削除します' } %>
+    <div class="d-flex">
+      <%= link_to '編集', edit_task_path(task) %>
       <%= button_to '削除', task_path(task), method: :delete %>
     </div>
   </div>
