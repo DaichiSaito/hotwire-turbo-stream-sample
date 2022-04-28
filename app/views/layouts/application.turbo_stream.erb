@@ -1,6 +1,0 @@
-<%#= turbo streamでの更新の時はこっちが使われる。よってflashがよしなに表示される %>
-<%= turbo_stream.replace "flash" do %>
-  <%= render "shared/flash" %>
-<% end %>
-
-<%= yield %>
