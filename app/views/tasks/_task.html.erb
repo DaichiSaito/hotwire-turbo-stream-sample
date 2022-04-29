@@ -1,9 +1,11 @@
 <%= turbo_frame_tag dom_id(task) do %>
   <div class="task-item d-flex justify-content-between <%= task.completed? ? 'completed' : '' %>">
-    <%= form_with model: task do |f| %>
-      <%= f.check_box :completed, checked: task.completed?, onchange: "this.form.requestSubmit();" %>
-    <% end %>
-    <p class="text-sm"><%= task.name %></p>
+    <div class="d-flex align-items-center gap-2">
+      <%= form_with model: task do |f| %>
+        <%= f.check_box :completed, checked: task.completed?, onchange: "this.form.requestSubmit();" %>
+      <% end %>
+      <p class="text-sm m-0 task-name"><%= task.name %></p>
+    </div>
     <div class="d-flex">
       <%= link_to '編集', edit_task_path(task) %>
       <%= button_to '削除', task_path(task), method: :delete %>

@@ -2,5 +2,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 .task-item.completed {
-  text-decoration-line: line-through;
+  .task-name {
+    text-decoration-line: line-through;
+  }
 }
