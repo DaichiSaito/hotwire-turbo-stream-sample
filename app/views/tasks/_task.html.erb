@@ -1,5 +1,8 @@
 <%= turbo_frame_tag dom_id(task) do %>
-  <div class="d-flex justify-content-between">
+  <div class="task-item d-flex justify-content-between <%= task.completed? ? 'completed' : '' %>">
+    <%= form_with model: task do |f| %>
+      <%= f.check_box :completed, checked: task.completed?, onchange: "this.form.requestSubmit();" %>
+    <% end %>
     <p class="text-sm"><%= task.name %></p>
     <div class="d-flex">
       <%= link_to '編集', edit_task_path(task) %>
